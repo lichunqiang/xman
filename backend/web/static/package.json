@@ -1,0 +1,24 @@
+{
+  "family": "app",
+  "version": "0.0.1",
+  "name": "gruntTest",
+  "spm": {
+    "alias": {
+      "jquery": "jquery/jquery/1.10.1/jquery",
+      "jquery-debug": "jquery/jquery/1.10.1/jquery-debug.js",
+      "underscore": "gallery/underscore/1.4.4/underscore.js",
+      "underscore-debug": "gallery/underscore/1.4.4/underscore-debug.js"
+    }
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cmd-concat": "~0.2.7",
+    "grunt-cmd-transport": "~0.4.1",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-cssmin": "^0.10.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-uglify": "^0.5.0"
+  }
+}

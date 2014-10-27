@@ -1,0 +1,17 @@
+<{extends file='@view/layouts/base.html'}>
+<{block name='content'}>
+
+
+<{/block}>
+
+
+<{block name='javascript'}>
+<{$smarty.block.parent}>
+<script type="text/javascript">
++function() {
+	console.log('this');
+}
+
+</script>
+
+<{/block}>

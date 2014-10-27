@@ -1,0 +1,22 @@
+<{extends file='@view/layouts/base.html'}>
+
+<{block name='body'}>
+
+<{use class='yii\widgets\ActiveForm' type='block'}>
+
+
+<{ActiveForm assign='form' id='login-form' action='/admin/user/login' options=['class' => 'form-horizontal']}>
+
+    <{$form->field($model, 'username')}>
+    <{$form->field($model, 'password')->passwordInput()}>
+
+	<label for=""><{$model->getAttributeLabel('age')}></label>
+    <input type='text' name='LoginForm[age]' value='<{$model->age}>'>
+    <div class="form-group">
+        <div class="col-lg-offset-1 col-lg-11">
+            <input type="submit" value="<{Yii::t('user', 'submit')}>" class="btn btn-primary" />
+        </div>
+    </div>
+<{/ActiveForm}>
+
+<{/block}>

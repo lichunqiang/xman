@@ -1,0 +1,33 @@
+<{extends file='@app/views/layouts/base.html'}>
+
+<{block name=head}>
+  <link href="/css/mypage.css" rel="stylesheet" type="text/css"/>
+  <script src="/js/mypage.js"></script>
+<{/block}>
+
+<{block name=body}>
+
+<{if $this->beginCache('title')}>
+	<ul>
+	<{foreach from=$users item=user}>
+		<li><{$user}></li>
+	<{/foreach}>
+	</ul>
+	<{$this->endCache()}>
+<{/if}>
+
+<form action="" method="POST" role="form">
+	<legend><{$this->title}></legend>
+
+	<div class="form-group">
+		<label for="">label</label>
+		<input type="text" class="form-control" id="" placeholder="Input field">
+	</div>
+
+	<button type="submit" class="btn btn-primary">提交</button>
+</form>
+
+<{use class="yii\helpers\Html"}>
+<{Html::mailto($app->params['adminEmail'])}>
+
+<{/block}>

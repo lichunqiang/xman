@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<{$app->language}>">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=<{$app->charset}>" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <{use class='\yii\helpers\Html'}>
+    <{Html::csrfMetaTags()}>
+    <title><{$this->title}></title>
+	<link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon_1.gif">
+    <!-- Main stylesheets -->
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css" />
+	<style>
+	.form-actions {margin: 0 -20px;padding: 19px 20px 20px; background: #f5f5f5;padding-left: 20px;border-top: 1px solid #E5E5E5;position: relative;}
+	.form-actions:before, .form-actions:after {content: "";display: table;line-height: 0;}
+	.form-actions:after {clear: both;}
+	.form-actions .checkbox {position: relative;top: 10px;*top:5px;}
+	.form-actions .btn {position: absolute; margin-right: 0;right: 20px;top: 20px;}
+	.form-actions .controls {line-height: 30px;	}
+    .error{width:220px; padding-left:5px; color:#FF0000; font-weight:bold}
+	</style>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/static/js/plugins/html5.js"></script>
+    <![endif]-->
+    <!--[if lte IE 7]><script src="/static/css/lte-ie7.js"></script><![endif]-->
+    </head>
+    <body class="loginPage">
+    <!--[if lte IE 7]>
+    <div class='ie-warn alert alert-block'>
+        <h4>温馨提示：</h4>
+        <p>
+        本站不支持 IE 7 及以下版本浏览器。
+        为了获得更好的浏览体验，我们强烈建议您
+        <a href="http://browsehappy.com" target="_blank">升级</a>
+        到最新版本的IE浏览器，或者使用较新版本的 Google Chrome、Firefox、Safari 等。
+        如果您使用的是 IE 9 或以上版本，请关闭“兼容性视图”。
+        </p>
+    </div>
+    <![endif]-->
+    <div class="container-fluid" path='<{path route="site/login" userId=123}>' url='<{url route="site/login" userId=123}>'>
+        <div id="header">
+            <div class="row-fluid">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                      <div class="container">
+                            <a class="brand" href="/"><img style='position: absolute;left: 0;width:123px;height:50px;' src="<{$smarty.const.SYS_URL}>/static/images/logo.png"><{Yii::t('app', 'login_title')}><span class="slogan"></span></a>
+                      </div>
+                    </div><!-- /navbar-inner -->
+                  </div><!-- /navbar -->
+            </div><!-- End .row-fluid -->
+        </div><!-- End #header -->
+    </div><!-- End .container-fluid -->
+    <div class="container-fluid">
+        <div class="loginContainer">
+        <{use class='yii\widgets\ActiveForm' type='block'}>
+        <{use class='yii\helpers\Url'}>
+
+        <{ActiveForm assign='form' id='loginForm' action='/site/login' options=['class' => 'form-horizontal', 'onsubmit' => "return checkData();"]}>
+            <div class="form-row row-fluid">
+                <label class="form-label span12" for="username">
+                    <{$model->getAttributeLabel('account')}>:
+                    <span class="icon16 icon-user"></span>
+                </label>
+                <input class="text" id="username" type="text" placeholder="<{$model->getAttributeLabel('account')}>"  name="LoginForm[account]" value="<{$model->account}>" />
+            </div>
+            <div class="form-row row-fluid">
+                <label class="form-label span12" for="password">
+                    <{$model->getAttributeLabel('password')}>:
+                    <span class="icon16 icon-wrench"></span>
+                    <!--<span class="forgot"><a href="#">忘记密码?</a></span>-->
+                </label>
+                <input class="text" id="password" type="password" name="LoginForm[password]" placeholder="<{$model->getAttributeLabel('password')}>" />
+				<input type='hidden' name='zc' value='tet'>
+            </div>
+            <div class="form-actions">
+                <div class="span12 controls">
+                    <!--<input type="checkbox" id="keepLoged" value="Value" class="nostyle" name="logged" checked/>-->
+					<div id="msg"><{Yii::t('app', 'login_welcome')}></div>
+                    <button type="submit" class="btn btn-info" id="loginBtn"><span class="icon16 icon-exit  white"></span><{Yii::t('app', 'login_btn')}></button>
+                </div>
+            </div>
+        <{/ActiveForm}>
+        </div>
+    </div><!-- End .container-fluid -->
+    <script type="text/javascript" src="<{$app->params['js_components']}>/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript">
+		function checkData()
+		{
+			if($("#username").val() == "" || $("#password").val() == "")
+			{
+				$("#msg").html("<{Yii::t('app', 'account or password can not null')}>").addClass('error');
+				return false;
+			}
+			return true;
+		}
+		$(document).ready(function(){
+			var msg = "<{$msg}>"
+			if(msg != '')
+			{
+				$("#msg").html(msg).css({width:"220px", "padding-left":"5px", color:"#FF0000", "font-weight":"bold"});
+			}
+		});
+	</script>
+    </body>
+</html>
